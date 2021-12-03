@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace AoC
 {
@@ -34,5 +35,24 @@ namespace AoC
             }
             return counter;
         }
+
+        public static List<string> getListOfMatchingIndicies(List<string> data, string key)
+        {
+            return data.Where(x => x.Contains(key)).ToList();
+        }
+
+
+        public static List<int> getDigits(List<string> data)
+        {
+            List<int> ret = new List<int>();            
+
+            data.ForEach(x => {
+                ret.Add(Convert.ToInt32(Regex.Replace(x, "[^0-9]", "")));
+            });
+
+            return ret;
+
+        }
+
     }
 }
