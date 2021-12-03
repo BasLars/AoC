@@ -8,13 +8,31 @@ namespace AoC
 {
     public static class Utilities
     {
-        public static string[] getInputAsStringArray(string fileName){
-            return File.ReadAllLines($"./InputFiles/{fileName}");
-        }  
+        public static List<string> getInputAsStringList(string fileName)
+        {
+            return File.ReadAllLines($"./InputFiles/{fileName}")
+            .Select(line => Convert.ToString(line))
+            .ToList();
+        }
 
-        public static int[] getInputAsIntArray(string fileName){
-            string[] input = File.ReadAllLines($"./InputFiles/{fileName}");
-            return Array.ConvertAll(input, s => Int32.Parse(s));
-        }       
+        public static List<int> getInputAsIntList(string fileName)
+        {
+            return File.ReadAllLines($"./InputFiles/{fileName}")
+            .Select(line => int.Parse(line))
+            .ToList();
+        }
+
+        public static int countOfBiggerThanPrevious(List<int> data)
+        {
+            int counter = 0;
+            for (int i = 1; i < data.Count(); i++)
+            {
+                if (data[i] > data[i - 1])
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
     }
 }
