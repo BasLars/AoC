@@ -7,7 +7,7 @@ namespace AoC
     {
         static void Main(string[] args)
         {
-            Day2.solvePart1();            
+            Day2.solvePart2();
         }
     }
 }
